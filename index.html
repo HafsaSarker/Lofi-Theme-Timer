@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lofi Timer</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+        <!--Digital Clock Start-->
+        <div class="container">
+            <div class="title">30 min Timer</div>
+            <div class="center-pic">
+                <img class="img" src="https://i.pinimg.com/originals/08/b7/ce/08b7ce1d372f301d8fce8c52e9ac80f3.gif">
+            </div>
+            
+            <div class="header">Love to Study ~ Lofi Cafe</div>
+             
+            <!--The music bar-->
+            <div class="prog">
+                <div class="prog-time">
+                    <div class="left">
+                        <span id="min">00</span>:
+                        <span id="sec">00</span>
+                    </div>
+                    <p class="right">30:00</p>
+                </div>
+                <div class="prog-bar">
+                    <div class="prog-bar-inner"></div>
+                </div>
+            </div>
+            
+            <!--Icons-->
+            <div class="icons">
+                <!---Div holding 3 things-->
+
+                <img class="stop-button" id="stop-button" src="pause-button.png">
+
+                <img class="start-button" id="start-button" src="video-play-button.png">
+
+                <img class="next-button" id="next-button" src="undo-circular-arrow (1).png">
+
+            </div>
+
+            <script>
+                let minutes = 00;
+                let seconds = 00;
+                let milliseconds = 00;
+                let interval;
+                
+                const minContainer = document.getElementById("min");
+                const secContainer = document.getElementById("sec");
+                const start = document.getElementById("start-button");
+                const stop = document.getElementById("stop-button");
+                const reset = document.getElementById("next-button");
+
+
+                const startTimer = () =>{
+                    clearInterval(interval);
+                    interval = setInterval(startWatch, 1000);
+                }
+
+                const stopTimer = () =>{
+                    clearInterval(interval);
+                }
+                const resetTimer = () =>{
+                    milliseconds = 0;
+                    seconds = 0;
+                    minutes = 0;
+
+                    secContainer.innerHTML = "00";
+                    minContainer.innerHTML = "00";
+                    clearInterval(interval);
+                }
+                function startWatch(){
+                    milliseconds++;
+                    if(milliseconds < 99){
+                        milliseconds = 0;
+                        seconds++;
+                    }
+                    
+                    if(seconds < 10){
+                        secContainer.innerHTML = `0${seconds}`;
+                    }
+                    else if(seconds == 59){
+                        minutes++;
+                        seconds = 0;
+                        secContainer.innerHTML = "00";
+                    }
+                    else{
+                        secContainer.innerHTML = seconds;
+                    }
+
+                    if(minutes >= 30 ){
+                        stop.addEventListener("abort", resetTimer);
+                    }
+                    else if(minutes < 10){
+                        minContainer.innerHTML = `0${minutes}`;
+                    }
+                    else{
+                        minContainer.innerHTML = minutes;
+                    }
+                }
+                //function to play music
+               
+
+                start.addEventListener("click", startTimer);
+                
+                stop.addEventListener("click", stopTimer);
+                
+                reset.addEventListener("click", resetTimer);
+                    
+       
+
+            </script>
+        </div>
+    </body>
+</html>

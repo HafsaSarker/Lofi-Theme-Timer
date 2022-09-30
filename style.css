@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #e7d7d1;
+}
+.title,
+.header{
+  font-family: 'Paytone One', sans-serif; 
+  font-size: 24px;
+  color: #4d3f3f;
+}
+
+.header{
+  font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+.img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: solid;
+    border-radius: 10px;
+    border-color:  #6e5d5c;
+}
+.base-timer{
+    position: relative;
+    height: 60px;
+    width: 450px;
+
+}
+.base-timer_rect{
+    fill: none;
+    stroke: none;
+}
+.base-timer_path-elapsed{
+    stroke:#948682;
+    stroke-width:4px;
+
+}
+.base-timer-label{
+    position: absolute;
+    height: 60px;
+    width: 450px;
+    top: 0;
+    font-size: 40px;
+}
+.icons{
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition:opacity 0.15s;
+}
+.stop-button:hover,
+.start-button:hover,
+.next-button:hover{
+  opacity: .4;
+}
+.stop-button,
+.start-button,
+.next-button{
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  object-position: center;
+} 
+.stop-button{
+  height: 24px;
+}
+
+  :root {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+  
+    --bg: #EBEBEB;
+    --black: #333333;
+    --prog: #6e5d5c;
+  }
+ 
+  
+  body {
+    background: var(--bg);
+    color: var(--black);
+  }
+  .prog {
+    padding: 10px 0;
+  }
+  .prog-time {
+    padding: 3px 5px;
+    color: var(--prog);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+  }
+ 
+  .prog-bar {
+    width: 400px;
+    height: 10px;
+    padding: 1px;
+    border-radius: 25px;
+    background: #c9b8b3;
+    box-shadow:  1px 1px 10px #b0a9b3, 
+                0px 1px 10px #ffffff;
+  
+  }
+  
+  .prog-bar-inner {
+    height: 8px;
+    background: var(--prog);
+    border-radius: 25px;
+  }
+  
+  .prog-bar-inner {
+    animation: timer 1800s linear 0.1s;
+  }
+
+  /*      keyframes   */
+
+  @keyframes timer {
+    0%      {width: 0%;}
+    100%    {width: 100%;}
+  }
